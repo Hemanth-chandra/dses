@@ -1,0 +1,15 @@
+{
+  "ER": "Emergency room",
+  "ICU": "Intensive care unit",
+  "CT": "CT scan",
+  "NEURO": "Neurosurgery",
+  "NEUROLOGY": "Neurologist (stroke care)",
+  "CATHLAB": "Cardiac cath lab",
+  "TRAUMA": "Trauma surgery team",
+  "BLOODBANK": "Blood bank",
+  "BURN": "Burn unit",
+  "MATERNITY": "Maternity / obstetrics",
+  "NICU": "Newborn ICU",
+  "PAEDS": "Paediatric care",
+  "ANTIVENOM": "Anti-venom / poison care"
+}

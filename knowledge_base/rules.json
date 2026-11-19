@@ -1,0 +1,131 @@
+[
+  {"id": "A1", "stage": "needs", "priority": 50, "source": "Trauma care guideline (head injury)",
+   "description": "Head injury in a road accident needs a CT scan and a neurosurgeon",
+   "if": [{"fact": "emergency_type", "op": "==", "value": "Road accident"}, {"fact": "head_injury", "op": "is_true"}],
+   "then": [{"action": "add", "fact": "needs", "value": ["CT", "NEURO"]}]},
+
+  {"id": "A2", "stage": "needs", "priority": 50, "source": "Trauma care guideline",
+   "description": "Every road accident needs a trauma surgery team",
+   "if": [{"fact": "emergency_type", "op": "==", "value": "Road accident"}],
+   "then": [{"action": "add", "fact": "needs", "value": ["TRAUMA"]}]},
+
+  {"id": "A3", "stage": "needs", "priority": 50, "source": "Trauma care guideline",
+   "description": "Heavy bleeding needs a blood bank",
+   "if": [{"fact": "heavy_bleeding", "op": "is_true"}],
+   "then": [{"action": "add", "fact": "needs", "value": ["BLOODBANK"]}]},
+
+  {"id": "A4", "stage": "needs", "priority": 50, "source": "Cardiac emergency protocol",
+   "description": "Heart attack signs need a hospital with a cath lab",
+   "if": [{"fact": "emergency_type", "op": "==", "value": "Heart attack signs"}],
+   "then": [{"action": "add", "fact": "needs", "value": ["CATHLAB"]}, {"action": "set", "fact": "severity", "value": "Critical"}]},
+
+  {"id": "A5", "stage": "needs", "priority": 50, "source": "Stroke care protocol",
+   "description": "Stroke signs need a CT scan and a neurologist",
+   "if": [{"fact": "emergency_type", "op": "==", "value": "Stroke signs"}],
+   "then": [{"action": "add", "fact": "needs", "value": ["CT", "NEUROLOGY"]}, {"action": "set", "fact": "severity", "value": "Critical"}]},
+
+  {"id": "A6", "stage": "needs", "priority": 50, "source": "Burn care guideline",
+   "description": "Major burns need a burn unit",
+   "if": [{"fact": "emergency_type", "op": "==", "value": "Burns"}, {"fact": "major_burns", "op": "is_true"}],
+   "then": [{"action": "add", "fact": "needs", "value": ["BURN"]}, {"action": "set", "fact": "severity", "value": "Critical"}]},
+
+  {"id": "A7", "stage": "needs", "priority": 50, "source": "Obstetric referral guideline",
+   "description": "Pregnancy complication needs maternity care and a newborn ICU",
+   "if": [{"fact": "emergency_type", "op": "==", "value": "Pregnancy complication"}],
+   "then": [{"action": "add", "fact": "needs", "value": ["MATERNITY", "NICU"]}]},
+
+  {"id": "A8", "stage": "needs", "priority": 50, "source": "Paediatric referral guideline",
+   "description": "A child patient needs paediatric care",
+   "if": [{"fact": "age_group", "op": "==", "value": "Child (below 14)"}],
+   "then": [{"action": "add", "fact": "needs", "value": ["PAEDS"]}]},
+
+  {"id": "A9", "stage": "needs", "priority": 50, "source": "Poison and snake bite guideline",
+   "description": "Snake bite or poisoning needs anti-venom / poison care",
+   "if": [{"fact": "emergency_type", "op": "==", "value": "Snake bite / poisoning"}],
+   "then": [{"action": "add", "fact": "needs", "value": ["ANTIVENOM"]}]},
+
+  {"id": "C1", "stage": "needs", "priority": 60, "source": "Simulated dispatcher interview",
+   "description": "An unconscious patient is critical",
+   "if": [{"fact": "conscious", "op": "is_false"}],
+   "then": [{"action": "set", "fact": "severity", "value": "Critical"}]},
+
+  {"id": "C2", "stage": "needs", "priority": 60, "source": "Simulated dispatcher interview",
+   "description": "Heavy bleeding makes the patient critical",
+   "if": [{"fact": "heavy_bleeding", "op": "is_true"}],
+   "then": [{"action": "set", "fact": "severity", "value": "Critical"}]},
+
+  {"id": "C3", "stage": "needs", "priority": 40, "source": "Golden hour principle",
+   "description": "A critical patient needs an ICU and should reach care within 40 minutes",
+   "if": [{"fact": "severity", "op": "==", "value": "Critical"}],
+   "then": [{"action": "add", "fact": "needs", "value": ["ICU"]}, {"action": "set", "fact": "time_limit", "value": 40}]},
+
+  {"id": "E1", "stage": "needs", "priority": 30, "source": "Traffic police data (assumed)",
+   "description": "Heavy traffic: ambulance average speed 15 km/h",
+   "if": [{"fact": "traffic", "op": "==", "value": "Heavy"}],
+   "then": [{"action": "set", "fact": "speed_kmph", "value": 15}]},
+
+  {"id": "E2", "stage": "needs", "priority": 30, "source": "Traffic police data (assumed)",
+   "description": "Medium traffic: ambulance average speed 25 km/h",
+   "if": [{"fact": "traffic", "op": "==", "value": "Medium"}],
+   "then": [{"action": "set", "fact": "speed_kmph", "value": 25}]},
+
+  {"id": "E3", "stage": "needs", "priority": 30, "source": "Traffic police data (assumed)",
+   "description": "Low traffic: ambulance average speed 40 km/h",
+   "if": [{"fact": "traffic", "op": "==", "value": "Low"}],
+   "then": [{"action": "set", "fact": "speed_kmph", "value": 40}]},
+
+  {"id": "E4", "stage": "needs", "priority": 30, "source": "Simulated dispatcher interview",
+   "description": "Rain reduces ambulance speed by 20%",
+   "if": [{"fact": "rain", "op": "is_true"}],
+   "then": [{"action": "set", "fact": "speed_factor", "value": 0.8}]},
+
+  {"id": "E5", "stage": "needs", "priority": 30, "source": "Hospital working hours",
+   "description": "Between 10 pm and 6 am it is night time",
+   "if": [{"fact": "hour", "op": "not_between", "value": [6, 21]}],
+   "then": [{"action": "set", "fact": "night", "value": true}]},
+
+  {"id": "F1", "stage": "filter", "priority": 90, "source": "Referral policy",
+   "description": "Reject a hospital that lacks any needed facility",
+   "if": [{"fact": "missing", "op": "not_empty"}],
+   "then": [{"action": "reject", "reason": "lacks {missing}"}]},
+
+  {"id": "F2", "stage": "filter", "priority": 80, "source": "Referral policy",
+   "description": "Reject a hospital with no free ICU bed when ICU is needed",
+   "if": [{"fact": "needs", "op": "contains", "value": "ICU"}, {"fact": "icu_beds", "op": "<=", "value": 0}],
+   "then": [{"action": "reject", "reason": "no free ICU bed"}]},
+
+  {"id": "F3", "stage": "filter", "priority": 80, "source": "Hospital working hours",
+   "description": "Reject a hospital that is closed at night",
+   "if": [{"fact": "night", "op": "is_true"}, {"fact": "open_24x7", "op": "is_false"}],
+   "then": [{"action": "reject", "reason": "closed at night"}]},
+
+  {"id": "F4", "stage": "filter", "priority": 80, "source": "Hospital status board",
+   "description": "Reject a hospital that has declared diversion (overloaded)",
+   "if": [{"fact": "on_diversion", "op": "is_true"}],
+   "then": [{"action": "reject", "reason": "on diversion (overloaded)"}]},
+
+  {"id": "F5", "stage": "filter", "priority": 70, "source": "Referral policy",
+   "description": "Reject a hospital with no free bed of any kind",
+   "if": [{"fact": "general_beds", "op": "<=", "value": 0}, {"fact": "icu_beds", "op": "<=", "value": 0}],
+   "then": [{"action": "reject", "reason": "no free beds"}]},
+
+  {"id": "D1", "stage": "decide", "priority": 100, "source": "Control room policy",
+   "description": "If no hospital passes, a human must decide (unstructured case)",
+   "if": [{"fact": "accepted_count", "op": "==", "value": 0}],
+   "then": [{"action": "alert", "level": "error", "message": "No hospital meets all needs. Dispatcher must decide. Nearest hospital with an ER for stabilisation: {nearest_er}."}]},
+
+  {"id": "D2", "stage": "decide", "priority": 90, "source": "Golden hour principle",
+   "description": "Critical patient and best match is beyond the time limit: suggest stabilising first",
+   "if": [{"fact": "severity", "op": "==", "value": "Critical"}, {"fact": "best_time", "op": ">", "value_fact": "time_limit"}],
+   "then": [{"action": "alert", "level": "warning", "message": "Best match takes {best_time} min (limit {time_limit} min). Consider stabilising at {nearest_icu} first."}]},
+
+  {"id": "D3", "stage": "decide", "priority": 80, "source": "Control room policy",
+   "description": "Last ICU bed at the chosen hospital: send a pre-alert to reserve it",
+   "if": [{"fact": "needs", "op": "contains", "value": "ICU"}, {"fact": "best_icu_beds", "op": "==", "value": 1}],
+   "then": [{"action": "alert", "level": "info", "message": "Pre-alert {best_name} to reserve its last ICU bed."}]},
+
+  {"id": "D4", "stage": "decide", "priority": 70, "source": "Control room policy",
+   "description": "Always pre-alert the chosen hospital for a critical patient",
+   "if": [{"fact": "severity", "op": "==", "value": "Critical"}, {"fact": "accepted_count", "op": ">", "value": 0}],
+   "then": [{"action": "alert", "level": "info", "message": "Critical patient: call {best_name} so the team is ready on arrival."}]}
+]

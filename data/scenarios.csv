@@ -1,0 +1,21 @@
+id,area,emergency_type,head_injury,heavy_bleeding,conscious,major_burns,age_group,traffic,rain,hour
+1,Morar,Road accident,True,False,True,False,Adult,Heavy,False,18
+2,Lashkar,Road accident,False,True,False,False,Adult,Medium,False,13
+3,Phool Bagh,Heart attack signs,False,False,True,False,Elderly (above 60),Heavy,False,19
+4,Hazira,Burns,False,False,True,True,Adult,Low,False,10
+5,Kampoo,Pregnancy complication,False,False,True,False,Adult,Medium,True,23
+6,Maharajpura,Snake bite / poisoning,False,False,True,False,Adult,Low,False,6
+7,Gole Ka Mandir,Stroke signs,False,False,True,False,Elderly (above 60),Medium,False,11
+8,City Centre,Road accident,True,True,False,False,Adult,Heavy,True,20
+9,Thatipur,Other / general,False,False,True,False,Child (below 14),Low,False,16
+10,DD Nagar,Road accident,False,False,True,False,Adult,Low,False,2
+11,Railway Station,Heart attack signs,False,False,True,False,Adult,Heavy,True,9
+12,Sithouli,Road accident,True,False,True,False,Adult,Low,False,15
+13,Morar,Burns,False,False,True,True,Child (below 14),Medium,False,12
+14,Lashkar,Stroke signs,False,False,False,False,Elderly (above 60),Low,False,1
+15,Phool Bagh,Other / general,False,False,True,False,Adult,Low,False,23
+16,Hazira,Snake bite / poisoning,False,False,False,False,Child (below 14),Medium,True,21
+17,City Centre,Pregnancy complication,False,True,True,False,Adult,Heavy,False,17
+18,Kampoo,Road accident,False,False,True,False,Child (below 14),Medium,False,8
+19,Gole Ka Mandir,Heart attack signs,False,False,False,False,Elderly (above 60),Low,False,4
+20,Maharajpura,Road accident,True,False,True,False,Adult,Medium,False,14

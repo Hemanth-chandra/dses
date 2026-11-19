@@ -1,0 +1,11 @@
+id,name,area,lat,lon,facilities,icu_beds,general_beds,avg_wait_min,open_24x7,on_diversion,type
+H01,Sanjeevani Multispeciality Hospital,City Centre,26.2045,78.1985,ER;ICU;CT;NEURO;NEUROLOGY;CATHLAB;TRAUMA;BLOODBANK,3,12,15,True,False,Private
+H02,Gwalior Trauma & Ortho Centre,Lashkar,26.1995,78.1530,ER;ICU;CT;NEURO;TRAUMA;BLOODBANK,1,8,10,True,False,Private
+H03,Morar Community Hospital,Morar,26.2275,78.2240,ER;MATERNITY;PAEDS,0,10,20,True,False,Government
+H04,Heartline Cardiac Institute,Thatipur,26.2175,78.2095,ER;ICU;CATHLAB,2,6,8,True,False,Private
+H05,Chambal Burns & Plastic Surgery Centre,Hazira,26.2385,78.1765,ER;ICU;BURN,2,5,12,True,False,Private
+H06,Shishu Mata Hospital,Kampoo,26.1940,78.1650,ER;ICU;MATERNITY;NICU;PAEDS;BLOODBANK,1,9,10,True,False,Private
+H07,City Care Clinic,Phool Bagh,26.2080,78.1700,ER,0,4,5,False,False,Private
+H08,Nova Neuro & Stroke Centre,Gole Ka Mandir,26.2345,78.2165,ER;ICU;CT;NEUROLOGY;NEURO,2,6,12,True,False,Private
+H09,District General Hospital,Kampoo,26.1920,78.1590,ER;ICU;CT;TRAUMA;BLOODBANK;MATERNITY;PAEDS;ANTIVENOM,4,30,35,True,False,Government
+H10,Maharajpura Primary Health Centre,Maharajpura,26.2820,78.2250,ER;ANTIVENOM,0,6,5,True,False,Government
